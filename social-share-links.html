@@ -1,0 +1,74 @@
+<!--
+
+SOCIAL SHARE LINKS
+
+Relies on <meta property="og:XXX"> tags set in the social tab of yoast on the individual post.
+
+Use the conventions below to add other networks.
+
+-->
+
+<div class="social-share">
+
+    <a onclick="shareOnFacebook()"><img src="<!-- LINK TO ICON -->"></a>
+    <a onclick="shareOnTwitter()"><img src="<!-- LINK TO ICON -->"></a>
+    <a onclick="shareOnLinkedIn()"><img src="<!-- LINK TO ICON -->"></a>
+
+</div>
+
+<style>
+
+.social-share {
+    text-align: center;
+}
+.social-share a {
+    margin-left: 10px;
+}
+.social-share a:first-of-type {
+    margin-left: 0px;
+}
+.social-share a img {
+    width: 30px
+}
+@media only screen and (min-width: 1024px) {
+    .social-share a img {
+        width: 45px
+    }
+    .social-share a {
+        margin-left: 15px;
+    }
+}
+
+</style>
+   
+<script>
+
+/* Gets the current URL */
+const link = window.location;
+
+function shareOnFacebook() {
+    /* Route URL of platform share functionality */
+    const facebookIntentURL = "https://www.facebook.com/sharer/sharer.php";
+    /* Build query string (platform specific) appended by the clean URL */
+    const contentQuery = `?u=${encodeURIComponent(link)}`;
+    /* Build the share URL and open in a new window */
+    const shareURL =  facebookIntentURL + contentQuery;
+    window.open(shareURL, "_blank");
+}
+
+function shareOnTwitter() {
+    const twitterIntentURL = "https://twitter.com/intent/tweet";
+    const contentQuery = `?url=${encodeURIComponent(link)}`;
+    const shareURL = twitterIntentURL + contentQuery;
+    window.open(shareURL, "_blank");
+}
+
+function shareOnLinkedIn() {
+    const linkedInIntentURL = "https://www.linkedin.com/sharing/share-offsite/";
+    const contentQuery = `?url=${encodeURIComponent(link)}`;
+    const shareURL = linkedInIntentURL + contentQuery;
+    window.open(shareURL, "_blank");
+}
+
+
+</script>
